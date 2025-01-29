@@ -9,11 +9,11 @@ import { useNavigate } from "react-router-dom";
 const ProductsForm = () => {
   const navigate = useNavigate();
 
-  /*   useEffect(() => {
+    useEffect(() => {
     if (!Cookies.get("token")) {
       navigate("/");
     }
-  }, []); */
+  }, []);
 
   return (
     <div className="app">

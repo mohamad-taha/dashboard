@@ -12,11 +12,11 @@ import "./App.css";
 function App() {
   const navigate = useNavigate();
 
-/*   useEffect(() => {
+  useEffect(() => {
     if (Cookies.get("token")) {
       navigate("/products");
     }
-  }, []); */
+  }, []);
 
   return (
     <>
