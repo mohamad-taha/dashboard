@@ -9,6 +9,7 @@ const Table = ({ setItemId, reload }) => {
 
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
       try {

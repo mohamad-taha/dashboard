@@ -16,11 +16,11 @@ const Home = () => {
   const [itemId, setItemId] = useState(null);
   const [reload, setReload] = useState(false);
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (!Cookies.get("token")) {
       navigate("/");
     }
-  }, []);
+  }, []); */
 
   const handlers = useSwipeable({
     onSwipedRight: () => setShowSidebar(true),

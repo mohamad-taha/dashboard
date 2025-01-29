@@ -7,6 +7,7 @@ import { Context } from "../../context/Context";
 const Modal = ({ itemId, reload, setReload }) => {
   const { modal, setModal, modalContent } = useContext(Context);
   const navigate = useNavigate();
+
   const okBtn = async () => {
     if (modalContent === "Are you sure you want to Logout?") {
       try {
@@ -42,6 +43,7 @@ const Modal = ({ itemId, reload, setReload }) => {
       }
     }
   };
+
   return (
     <div
       className="modal"
