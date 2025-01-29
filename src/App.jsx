@@ -13,10 +13,11 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!Cookies.get("token")) {
-      navigate("/");
+    if (Cookies.get("token")) {
+      navigate("/products");
     }
   }, []);
+
   return (
     <>
       <ContextProvider>
