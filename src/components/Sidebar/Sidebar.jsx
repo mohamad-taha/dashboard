@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Btn from "../LogoutBtn/Btn";
 import "./Sidebar.css";
+import { Context } from "../../context/Context";
 
 const Sidebar = () => {
+  const { showSidebar } = useContext(Context);
+  const smallWidth = window.innerWidth;
   return (
-    <div className="sidebar">
+    <div
+      className="sidebar"
+      style={{
+        transform:
+          smallWidth < 1024
+            ? showSidebar
+              ? "translateX(0)"
+              : "translateX(-100%)"
+            : "",
+      }}
+    >
       <div>
         <p className="logo">
           <span>Dash</span>

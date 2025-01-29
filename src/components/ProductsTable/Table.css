@@ -85,3 +85,37 @@
     }
   }
 }
+
+@media (max-width: 639px) {
+  .tableContainer {
+    padding: 20px;
+
+    table,
+    tr,
+    tbody,
+    thead {
+      display: block;
+      border-top: none;
+
+      td,
+      th {
+        display: flex;
+        justify-content: center;
+      }
+
+      th:first-child {
+        border-left: none;
+      }
+
+      th:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tableContainer {
+    padding: 20px;
+  }
+}

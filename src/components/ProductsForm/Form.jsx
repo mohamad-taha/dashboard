@@ -117,7 +117,7 @@ const Form = () => {
           ) : (localStorage.getItem("edit") === "true") & !file ? (
             <img src={defaultData.image_url} alt="uploaded image" />
           ) : (
-            <img src="/assets/imgs/UploadIcon.svg" alt="upload icon" />
+            <img src="./assets/imgs/UploadIcon.svg" alt="upload icon" />
           )}
           <input
             type="file"

@@ -90,7 +90,7 @@ const Table = ({ setItemId, reload }) => {
                       navigate(`/edit/${product.id}`);
                     }}
                   >
-                    <img src="/assets/imgs/edit.svg" alt="edit" />
+                    <img src="./assets/imgs/edit.svg" alt="edit" />
                   </button>
                   <button
                     onClick={() => {
@@ -101,7 +101,7 @@ const Table = ({ setItemId, reload }) => {
                       setModal(true);
                     }}
                   >
-                    <img src="/assets/imgs/bin.svg" alt="delete" />
+                    <img src="./assets/imgs/bin.svg" alt="delete" />
                   </button>
                 </div>
               </td>

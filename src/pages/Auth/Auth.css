@@ -12,8 +12,8 @@
   form {
     padding: 26px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    flex-direction: column;
     background-color: white;
     width: 520px;
     height: 620px;
@@ -115,6 +115,16 @@
     }
     img {
       width: 50%;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .register {
+    padding: 20px;
+
+    form {
+      padding: 15px;
     }
   }
 }

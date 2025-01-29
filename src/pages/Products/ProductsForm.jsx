@@ -15,16 +15,16 @@ const ProductsForm = () => {
     }
   }, []);
   return (
-    <div style={{ display: "flex" }}>
+    <div className="app">
+      <Navbar
+        title={
+          localStorage.getItem("edit") === "true"
+            ? "Products / Edit"
+            : "Products / Add"
+        }
+      />
       <Sidebar />
-      <div style={{ flexGrow: 1 }}>
-        <Navbar
-          title={
-            localStorage.getItem("edit") === "true"
-              ? "Products / Edit"
-              : "Products / Add"
-          }
-        />
+      <div className="appContent">
         <ProductsContent />
       </div>
       <Modal />

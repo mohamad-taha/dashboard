@@ -56,3 +56,24 @@
     }
   }
 }
+
+@media (max-width: 1023px) {
+  .productsForm {
+    form {
+      flex-direction: column;
+
+      label {
+        width: 100%;
+      }
+
+      button {
+        align-self: center;
+        margin-bottom: 10px;
+      }
+
+      >label{
+        padding: 20px;
+      }
+    }
+  }
+}

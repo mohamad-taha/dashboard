@@ -7,6 +7,8 @@
   justify-content: space-between;
   text-align: center;
   padding: 14px 0;
+  position: fixed;
+  transition: 200ms;
 
   .logo {
     font-weight: 800;
@@ -71,5 +73,10 @@
       background-color: transparent;
       border: none;
     }
+  }
+}
+@media (max-width: 1023px) {
+  .sidebar {
+    transform: translateX(-100%);
   }
 }
