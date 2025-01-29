@@ -122,6 +122,7 @@
 @media (max-width: 639px) {
   .register {
     padding: 20px;
+    height: 100vh;
 
     form {
       padding: 15px;
