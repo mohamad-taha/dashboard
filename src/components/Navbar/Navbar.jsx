@@ -30,10 +30,32 @@ const Navbar = ({ title }) => {
           className="listBtn"
           onClick={() => setShowSidebar(!showSidebar)}
         >
-          {showSidebar ? (
-            <img width={20} src="./assets/imgs/close.svg" alt="close icon" />
+          {!showSidebar ? (
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                fill="black"
+              />
+            </svg>
           ) : (
-            <img width={20} src="./assets/imgs/list.svg" alt="list icon" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 512 512"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"
+                fill="black"
+              />
+            </svg>
           )}
         </button>
       </div>

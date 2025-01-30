@@ -87,13 +87,13 @@ const Form = () => {
         setOpen(true);
         setTimeout(() => {
           navigate("/products");
+          localStorage.setItem("edit", false);
         }, 2000);
       }
     } catch {
       setOpen(true);
       setSnackContent("Error connecting to server try again later");
     }
-    localStorage.setItem("edit", false);
   };
 
   return (
