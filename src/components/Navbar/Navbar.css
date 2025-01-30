@@ -35,15 +35,30 @@ nav {
       }
     }
   }
+
+  .listBtn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+  }
 }
 @media (max-width: 639px) {
   nav {
     padding: 20px;
+
+    .listBtn {
+      display: block;
+    }
   }
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
   nav {
     padding: 20px;
+
+    .listBtn {
+      display: block;
+    }
   }
 }

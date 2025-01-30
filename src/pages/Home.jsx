@@ -4,9 +4,9 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import Table from "../components/ProductsTable/Table";
 import Modal from "../components/Popup/Modal";
 import { useNavigate } from "react-router-dom";
-import { useSwipeable } from "react-swipeable";
 import Cookies from "js-cookie";
 import { Context } from "../context/Context";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const { setShowSidebar } = useContext(Context);
@@ -22,12 +22,6 @@ const Home = () => {
     }
   }, []);
 
-  const handlers = useSwipeable({
-    onSwipedRight: () => setShowSidebar(true),
-    onSwipedLeft: () => setShowSidebar(false),
-    preventDefaultTouchmoveEvent: true,
-  });
-
   window.onresize = () => {
     if (window.innerWidth > 1023) {
       setShowSidebar(true);
@@ -37,7 +31,12 @@ const Home = () => {
   };
 
   return (
-    <div className="app" {...handlers}>
+    <div className="app">
+      <Helmet>
+        <title>dashboard | products</title>
+        {/* مافي داعي استخدم هون meta tags  لان الموقع مارح يرتفع بس ضفت title للجمالية */}
+      </Helmet>
+
       <Navbar title="Products" />
       <Sidebar />
       <div>

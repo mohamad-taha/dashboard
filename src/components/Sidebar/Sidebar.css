@@ -9,6 +9,7 @@
   padding: 14px 0 100px 0;
   position: fixed;
   transition: 200ms;
+  transform: translateX(0);
 
   .logo {
     font-weight: 800;

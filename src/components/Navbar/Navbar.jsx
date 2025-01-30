@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdAccountCircle } from "react-icons/md";
 import Cookies from "js-cookie";
+import { Context } from "./../../context/Context";
 import "./Navbar.css";
 
 const Navbar = ({ title }) => {
   const user = Cookies.get("user") ? JSON.parse(Cookies.get("user")) : "";
+  const { setShowSidebar, showSidebar } = useContext(Context);
 
   return (
     <nav>
@@ -24,6 +26,16 @@ const Navbar = ({ title }) => {
           <span>{user ? user.user_name : "your name"}</span>
           <span>Admin</span>
         </div>
+        <button
+          className="listBtn"
+          onClick={() => setShowSidebar(!showSidebar)}
+        >
+          {showSidebar ? (
+            <img width={20} src="./assets/imgs/close.svg" alt="close icon" />
+          ) : (
+            <img width={20} src="./assets/imgs/list.svg" alt="list icon" />
+          )}
+        </button>
       </div>
     </nav>
   );
