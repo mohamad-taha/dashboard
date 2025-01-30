@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 import Cookies from "js-cookie";
+import uploadImage from "../../../public/assets/imgs/UploadIcon.svg";
 import "./Form.css";
 
 const Form = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+  const [open, setOpen] = React.useState(false);
+  const [snackContent, setSnackContent] = React.useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [file, setFile] = useState("");
-
   const [defaultData, setDefaultData] = useState({});
+
+  const handleClose = (reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (params.id) {
@@ -64,14 +76,24 @@ const Form = () => {
           body: formData,
         }
       );
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        setOpen(true);
+        setSnackContent("Something is wrong don't leave any field blank");
       }
-      navigate("/products");
-      localStorage.setItem("edit", false);
-    } catch (err) {
-      console.log(err);
+
+      if (response.ok) {
+        setSnackContent("The process was completed successfully");
+        setOpen(true);
+        setTimeout(() => {
+          navigate("/products");
+        }, 2000);
+      }
+    } catch {
+      setOpen(true);
+      setSnackContent("Error connecting to server try again later");
     }
+    localStorage.setItem("edit", false);
   };
 
   return (
@@ -112,14 +134,21 @@ const Form = () => {
           <button type="submit">Save</button>
         </div>
         <label htmlFor="productImage">
-          {file ? (
-            <img src={URL.createObjectURL(file)} alt="uploaded image" />
-          ) : (localStorage.getItem("edit") === "true") & !file ? (
-            <img src={defaultData.image_url} alt="uploaded image" />
-          ) : (
-            <img src="./assets/imgs/UploadIcon.svg" alt="upload icon" />
-          )}
+          <img
+            src={
+              file
+                ? URL.createObjectURL(file)
+                : defaultData?.image_url
+                ? defaultData.image_url
+                : uploadImage
+            }
+            alt={
+              file || defaultData?.image_url ? "uploaded image" : "upload image"
+            }
+          />
+
           <input
+            required={localStorage.getItem("edit") ? false : true}
             type="file"
             name="productImage"
             id="productImage"
@@ -127,6 +156,20 @@ const Form = () => {
           />
         </label>
       </form>
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity={
+            snackContent === "The process was completed successfully"
+              ? "success"
+              : "error"
+          }
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {snackContent}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
