@@ -6,6 +6,7 @@ const Btn = () => {
 
   return (
     <button
+      aria-label="sign out"
       className="logout"
       onClick={() => {
         setModal(true);

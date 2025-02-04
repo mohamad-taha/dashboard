@@ -56,8 +56,19 @@ const Modal = ({ itemId, reload, setReload }) => {
       >
         <p>{modalContent}</p>
         <div className="actions">
-          <button onClick={() => okBtn()}>Yes</button>
-          <button onClick={() => setModal(false)}>No</button>
+          <button
+            aria-label={
+              modalContent === "Are you sure you want to Logout?"
+                ? "continue to logout"
+                : "confirm delete item"
+            }
+            onClick={() => okBtn()}
+          >
+            Yes
+          </button>
+          <button aria-label="close popup" onClick={() => setModal(false)}>
+            No
+          </button>
         </div>
       </div>
     </div>

@@ -131,7 +131,9 @@ const Form = () => {
               placeholder="Price"
             />
           </label>
-          <button type="submit">Save</button>
+          <button aria-label="save the data" type="submit">
+            Save
+          </button>
         </div>
         <label htmlFor="productImage">
           <img

@@ -18,6 +18,7 @@ const Navbar = ({ title }) => {
             height={40}
             style={{ borderRadius: "50%", objectFit: "cover" }}
             src={user?.profile_image_url}
+            alt="profile img"
           />
         ) : (
           <MdAccountCircle fontSize={35} fill="#444444" />
@@ -27,6 +28,7 @@ const Navbar = ({ title }) => {
           <span>Admin</span>
         </div>
         <button
+          aria-label="open menu"
           className="listBtn"
           onClick={() => setShowSidebar(!showSidebar)}
         >

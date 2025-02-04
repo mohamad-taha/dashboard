@@ -9,6 +9,7 @@
     span {
       font-weight: 700;
       font-size: 28px;
+      font-display: swap;
     }
 
     button {

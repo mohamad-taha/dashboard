@@ -24,8 +24,8 @@ const Table = ({ setItemId, reload }) => {
         }
         const data = await response.json();
         setData(data);
-      } catch (error) {
-        console.error("Error fetching items:", error);
+      } catch {
+        setData("Error fetching items:");
       }
     };
     getData();
@@ -36,6 +36,7 @@ const Table = ({ setItemId, reload }) => {
       <div className="header">
         <span>Manage Products</span>
         <button
+          aria-label="go to /add page"
           onClick={() => {
             localStorage.setItem("edit", false);
             navigate("/add");
@@ -74,6 +75,7 @@ const Table = ({ setItemId, reload }) => {
               <td>{`$${product.price}`}</td>
               <td>
                 <img
+                  loading="lazy"
                   src={product.image_url}
                   alt={product.name}
                   style={{
@@ -86,6 +88,7 @@ const Table = ({ setItemId, reload }) => {
               <td>
                 <div>
                   <button
+                    aria-label="go to /edit page"
                     onClick={() => {
                       localStorage.setItem("edit", true);
                       navigate(`/edit/${product.id}`);
@@ -94,6 +97,7 @@ const Table = ({ setItemId, reload }) => {
                     <img src="./assets/imgs/edit.svg" alt="edit" />
                   </button>
                   <button
+                    aria-label="delete item"
                     onClick={() => {
                       setModalContent(
                         "Are you sure you want to delete the product?"

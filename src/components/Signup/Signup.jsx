@@ -161,7 +161,7 @@ const Signup = () => {
                   alt="uploaded image"
                 />
               ) : (
-                <img src="./assets/imgs/UploadIcon.svg" alt="upload" />
+                <img src="./assets/imgs/UploadIcon.svg" alt="upload icon" />
               )}
             </div>
             <input
@@ -183,6 +183,7 @@ const Signup = () => {
       </div>
       <div>
         <button
+          aria-label="sign up"
           type="submit"
           disabled={formik.isSubmitting}
           style={
