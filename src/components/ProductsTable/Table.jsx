@@ -1,17 +1,45 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../context/Context";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
+import editIcon from "../../assets/imgs/edit.svg";
+import binIcon from "../../assets/imgs/bin.svg";
 import "./Table.css";
 
-const Table = ({ setItemId, reload }) => {
-  const { setModal, setModalContent } = useContext(Context);
+const Table = ({ setItemId, reload, setReload }) => {
+  const popup = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "rgba(239, 56, 38, 1)",
+      cancelButtonColor: "#4880ff",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (result.isConfirmed) {
+      setItemId(id);
+      try {
+        await fetch("https://vica.website/api/items/" + id, {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            AUTHORIZATION: Cookies.get("token"),
+          },
+        });
+        setReload(!reload);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       try {
         const response = await fetch("https://vica.website/api/items", {
           headers: {
@@ -27,6 +55,7 @@ const Table = ({ setItemId, reload }) => {
       } catch {
         setData("Error fetching items:");
       }
+      setLoading(false);
     };
     getData();
   }, [reload]);
@@ -68,7 +97,7 @@ const Table = ({ setItemId, reload }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((product, idx) => (
+          {data?.map((product, idx) => (
             <tr key={idx}>
               <td>{product.id}</td>
               <td>{product.name}</td>
@@ -94,19 +123,15 @@ const Table = ({ setItemId, reload }) => {
                       navigate(`/edit/${product.id}`);
                     }}
                   >
-                    <img src="./assets/imgs/edit.svg" alt="edit" />
+                    <img src={editIcon} alt="edit" />
                   </button>
                   <button
                     aria-label="delete item"
                     onClick={() => {
-                      setModalContent(
-                        "Are you sure you want to delete the product?"
-                      );
-                      setItemId(product.id);
-                      setModal(true);
+                      popup(product.id);
                     }}
                   >
-                    <img src="./assets/imgs/bin.svg" alt="delete" />
+                    <img src={binIcon} alt="delete" />
                   </button>
                 </div>
               </td>
@@ -114,6 +139,10 @@ const Table = ({ setItemId, reload }) => {
           ))}
         </tbody>
       </table>
+      {data.length === 0 && !loading && (
+        <p className="emptyData">No products found!</p>
+      )}
+      {loading && <div className="loader"></div>}
     </div>
   );
 };

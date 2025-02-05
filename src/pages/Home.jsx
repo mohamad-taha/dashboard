@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Table from "../components/ProductsTable/Table";
-import Modal from "../components/Popup/Modal";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { Context } from "../context/Context";
@@ -34,17 +33,20 @@ const Home = () => {
     <div className="app">
       <Helmet>
         <title>dashboard | products</title>
-        {/* مافي داعي استخدم هون meta tags  لان الموقع مارح يرتفع بس ضفت title للجمالية */}
       </Helmet>
 
       <Navbar title="Products" />
       <Sidebar />
       <div>
         <div className="appContent">
-          <Table setItemId={setItemId} reload={reload} />
+          <Table
+            setItemId={setItemId}
+            itemId={itemId}
+            reload={reload}
+            setReload={setReload}
+          />
         </div>
       </div>
-      <Modal itemId={itemId} setReload={setReload} reload={reload} />
     </div>
   );
 };

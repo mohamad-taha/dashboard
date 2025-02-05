@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Cookies from "js-cookie";
-import uploadImage from "../../../public/assets/imgs/UploadIcon.svg";
+import uploadImage from "../../assets/imgs/UploadIcon.svg";
 import "./Form.css";
 
 const Form = () => {

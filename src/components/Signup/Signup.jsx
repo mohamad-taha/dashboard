@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useFormik } from "formik";
+import uploadIcon from "../../assets/imgs/uploadIcon.svg";
 import * as yup from "yup";
 
 const Signup = () => {
@@ -161,7 +162,7 @@ const Signup = () => {
                   alt="uploaded image"
                 />
               ) : (
-                <img src="./assets/imgs/UploadIcon.svg" alt="upload icon" />
+                <img src={uploadIcon} alt="upload icon" />
               )}
             </div>
             <input

@@ -21,7 +21,6 @@ const Login = () => {
             ? "dashboard | Signup"
             : "dashboard | Signin"}
         </title>
-        {/* مافي داعي استخدم هون meta tags  لان الموقع مارح يرتفع بس ضفت title للجمالية */}
       </Helmet>
       <Outlet />
     </div>

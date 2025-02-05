@@ -36,7 +36,7 @@
     }
 
     label {
-      width: 505px;
+      width: 450px;
       display: flex;
       flex-direction: column;
     }
@@ -71,7 +71,7 @@
         margin-bottom: 10px;
       }
 
-      >label{
+      > label {
         padding: 20px;
       }
     }

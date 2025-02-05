@@ -87,6 +87,11 @@
   }
 }
 
+.emptyData {
+  text-align: center;
+  margin-top: 10px;
+}
+
 @media (max-width: 639px) {
   .tableContainer {
     padding: 20px;
@@ -118,5 +123,42 @@
 @media (min-width: 640px) and (max-width: 1023px) {
   .tableContainer {
     padding: 20px;
+  }
+}
+
+.loader {
+  margin-top: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 130px;
+  height: 4px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: #4880ff;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
   }
 }

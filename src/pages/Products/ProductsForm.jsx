@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Modal from "../../components/Popup/Modal";
 import ProductsContent from "../../components/ProductsForm/Form";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +23,6 @@ const ProductsForm = () => {
             ? "dashboard | edit product"
             : "dashboard | add product"}
         </title>
-        {/* مافي داعي استخدم هون meta tags  لان الموقع مارح يرتفع بس ضفت title للجمالية */}
       </Helmet>
       <Navbar
         title={
@@ -37,7 +35,6 @@ const ProductsForm = () => {
       <div className="appContent">
         <ProductsContent />
       </div>
-      <Modal />
     </div>
   );
 };

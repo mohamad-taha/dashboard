@@ -1,18 +1,41 @@
-import React, { useContext } from "react";
-import { Context } from "../../context/Context";
+import React from "react";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Btn = () => {
-  const { setModal, setModalContent } = useContext(Context);
+  const navigate = useNavigate();
+  const popup = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure you want to Logout?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "rgba(239, 56, 38, 1)",
+      cancelButtonColor: "#4880ff",
+      confirmButtonText: "Yes, sign out!",
+    });
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch("https://vica.website/api/logout", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: Cookies.get("token"),
+          },
+        });
+        if (response.ok) {
+          Cookies.remove("token");
+          Cookies.remove("user");
+          navigate("/");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   return (
-    <button
-      aria-label="sign out"
-      className="logout"
-      onClick={() => {
-        setModal(true);
-        setModalContent("Are you sure you want to Logout?");
-      }}
-    >
+    <button aria-label="sign out" className="logout" onClick={popup}>
       <svg
         width="18"
         height="18"
